@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>To-Do List</title>
+
+    <link type="text/css" rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+    <h1>To-Do List</h1>
+
+    <h2>Create new task</h2>
+
+    <form id="create-task-form">
+        <label for="description-field">Description:</label>
+        <input type="text" id="description-field" placeholder="Enter description...">
+
+        <label for="deadline-field">Deadline:</label>
+        <input type="date" id="deadline-field">
+
+        <input type="submit" value="Save">
+    </form>
+
+    <table id="tasks-table">
+        <thead>
+            <tr>
+                <th>Description</th>
+                <th>Deadline</th>
+                <th>Done</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>Learn HTML</td>
+                <td>02.06.2020</td>
+                <td>
+                    <input type="checkbox" class="mark-done" data-id=1>
+                </td>
+                <td>
+                    <a href="#" class="remove-task" data-id=1>X</a>
+                </td>
+            </tr>
+            <tr>
+                <td>Learn Javascript</td>
+                <td>12.06.2020</td>
+                <td>
+                    <input type="checkbox" class="mark-done" data-id=2>
+                </td>
+                <td>
+                    <a href="#" class="remove-task" data-id=2>X</a>
+                </td>
+            </tr>
+            <tr>
+                <td>Learn CSS</td>
+                <td>13.06.2020</td>
+                <td>
+                    <input type="checkbox" class="mark-done" data-id=3>
+                </td>
+                <td>
+                    <a href="#" class="remove-task" data-id=3>X</a>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+
+
+</body>
+</html>
