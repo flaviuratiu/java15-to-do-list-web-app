@@ -21,6 +21,30 @@ window.ToDoList = {
         });
     },
 
+    updateTask: function (id, done) {
+        const requestBody = {
+            done: done
+        };
+
+        $.ajax({
+            url: ToDoList.API_URL + '?id=' + id,
+            method: 'PUT',
+            contentType: 'application/json',
+            data: JSON.stringify(requestBody)
+        }).done(function () {
+            ToDoList.getTasks();
+        });
+    },
+
+    deleteTask: function (id) {
+        $.ajax({
+            url: ToDoList.API_URL + '?id=' + id,
+            method: 'DELETE'
+        }).done(function () {
+            ToDoList.getTasks();
+        });
+    },
+
     getTasks: function () {
         $.ajax({
             url: ToDoList.API_URL
@@ -69,6 +93,24 @@ window.ToDoList = {
         $('#create-task-form').submit(function (event) {
             event.preventDefault();
             ToDoList.createTask();
+        });
+
+        // delegate is necessary because .mark-done element is dynamically injected in the page
+        $('#tasks-table tbody').delegate('.mark-done', 'change', function (event) {
+            event.preventDefault();
+
+            let id = $(this).data('id');
+            let checked = $(this).is(':checked');
+
+            ToDoList.updateTask(id, checked);
+        });
+
+        $('#tasks-table tbody').delegate('.remove-task', 'click', function (event) {
+            event.preventDefault();
+
+            let id = $(this).data('id');
+
+            ToDoList.deleteTask(id);
         });
     }
 
